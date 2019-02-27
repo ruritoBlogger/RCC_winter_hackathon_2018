@@ -11,10 +11,10 @@ def getTime():
     return n
 
 def main():
-    start_time = time.time()
     print("タイマーを起動しました")
     target_time = getTime()
-    while True:
+    start_time = time.time()
+        while True:
         if time.time() - start_time > int(target_time):
             print("設定した時間が経過しました")
             break
