@@ -1,7 +1,7 @@
 import time
 import tkinter as tk
 
-def getTime():
+def get_time():
     while True:
         n = input("設定したい時間を入力してください:")
         if n.isdigit():
@@ -10,15 +10,24 @@ def getTime():
             print("数字を入力してください\n")
     return n
 
-def main():
-    # GUIの表示
+def set_gui():
     root = tk.Tk()
     root.title("キッチンタイマー")
     root.geometry("640x480")
+
+    # ウインドウに表示するものの設定
+    label = tk.Label(root, text="This is kittin timer")
+    label.grid()
+    
+    return root
+
+def main():
+    # GUIの表示
+    root = set_gui()
     print("タイマーを起動しました")
 
     # 計測時間の受け取り
-    target_time = getTime()
+    target_time = get_time()
     #計測開始時間の取得
     start_time = time.time()
 
