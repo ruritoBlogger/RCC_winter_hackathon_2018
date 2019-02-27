@@ -1,5 +1,6 @@
 import time
-import tkinter as tk
+from tkinter import *
+from tkinter import ttk
 
 def get_time():
     while True:
@@ -11,18 +12,19 @@ def get_time():
     return n
 
 def set_gui():
-    root = tk.Tk()
+    root = Tk()
     root.title("キッチンタイマー")
-    root.geometry("640x480")
-    root["relief"] = 'ridge'
-    root["borderwidth"] = 10
+    flame = ttk.Frame(
+            root,
+            height = 480,
+            width = 640,
+            relief = 'ridge',
+            borderwidth = 10
+            )
+    flame.grid()
 
 
     # ウインドウに表示するものの設定
-    label = tk.Label(root, text="This is kittin timer")
-    label["background"] = '#ffffff'
-    label["width"] = 240
-    label.grid()
     
     return root
 
