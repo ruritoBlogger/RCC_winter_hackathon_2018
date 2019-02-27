@@ -1,5 +1,10 @@
 def getTime():
-    time = input("設定したい時間を入力してください:")
+    while True:
+        time = input("設定したい時間を入力してください:")
+        if time.isdigit():
+            break
+        else:
+            print("数字を入力してください\n")
     return time
 
 def main():
