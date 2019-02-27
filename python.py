@@ -14,11 +14,14 @@ def set_gui():
     root = tk.Tk()
     root.title("キッチンタイマー")
     root.geometry("640x480")
-    root["relief"] = 'sunken'
+    root["relief"] = 'ridge'
+    root["borderwidth"] = 10
 
 
     # ウインドウに表示するものの設定
     label = tk.Label(root, text="This is kittin timer")
+    label["background"] = '#ffffff'
+    label["width"] = 240
     label.grid()
     
     return root
