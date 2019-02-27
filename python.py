@@ -6,7 +6,7 @@ def get_time():
         if n.isdigit():
             break
         else:
-            print("数字を入力してください\n")
+            print("時間を入力してください(秒)\n")
     return n
 
 def main():
@@ -25,7 +25,10 @@ def main():
         elif tmp != int(float(target_time) - time.time() + start_time) - 0.2 or tmp != int(float(target_time) - time.time() + start_time) + 0.2:
             if tmp != tmp2:
                 tmp2 = tmp
-                print(tmp + 1)
+                if(tmp + 1 > 9 ):
+                    print(tmp + 1)
+                else:
+                    print("0" + str(tmp + 1))
         tmp = int(float(target_time) - time.time() + start_time)
 
 if __name__ == '__main__':
