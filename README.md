@@ -1,2 +1,6 @@
 # RCC_winter_hackathon_2018
-my code about hackathon
+このリポジトリはハッカソン時に作成したものです。
+
+##仕様
+以下5言語を用いてそれぞれキッチンタイマーを実装する
+
