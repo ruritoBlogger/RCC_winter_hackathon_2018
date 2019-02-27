@@ -27,7 +27,9 @@ def set_gui():
     label1 = ttk.Label(
             flame,
             text="Hello",
-            background="#ffffff"
+            background="#ffffff",
+            width=48,
+            padding=(120,50)
             )
     label1.grid()
 
