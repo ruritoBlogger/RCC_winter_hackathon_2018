@@ -23,9 +23,14 @@ def set_gui():
             )
     flame.grid()
 
-
     # ウインドウに表示するものの設定
-    
+    label1 = ttk.Label(
+            flame,
+            text="Hello",
+            background="#ffffff"
+            )
+    label1.grid()
+
     return root
 
 def main():
