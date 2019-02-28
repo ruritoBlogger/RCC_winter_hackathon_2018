@@ -54,8 +54,20 @@ int main()
     bool mode = get_mode();
     int target_time = get_time(mode);
     double start_time = clock();
-
-
-
+    int tmp = (clock() - start_time)/CLOCKS_PER_SEC;
+    while(1)
+    {
+        
+        if(tmp != int( (clock() - start_time)/CLOCKS_PER_SEC ))
+        {
+            cout << target_time - tmp - 1 << endl;
+            tmp = int( (clock() - start_time)/CLOCKS_PER_SEC );
+            
+            if((clock() - start_time)/CLOCKS_PER_SEC > target_time)
+            {
+                break;
+            }
+        }
+    }
     return 1;
 }
