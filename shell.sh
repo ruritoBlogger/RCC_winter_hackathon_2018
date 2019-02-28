@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 InputTime() {
     if [ "$1" = y ]
@@ -40,7 +40,6 @@ do
     expr "$target_time" + 1 >/dev/null 2>&1
     if [ $? -lt 2 ]
     then
-        echo "great"
         break
     else
         echo "数字を入力してください"
@@ -51,16 +50,28 @@ do
 done
 
 # 分の場合の調整
-if [ $ans=y ]
+if [ "$ans" = y ]
 then
-    (( $target_time * 60 ))
+    target_time=$(( $target_time * 60 ))
 fi
 
 SECONDS=0
-
-### 時間測定したい処理
-sleep $target_time
-
-time=$SECONDS
-
-echo $time
+tmp=$SECONDS
+### 時間の表示
+while [ 1 ]
+do
+    time=$(( target_time - SECONDS ))
+    uptmp=`echo "scale=5;$SECONDS + 0.2" | bc`
+    downtmp=`echo "scale=5;$SECONDS - 0.2" | bc`
+    if [ "$target_time" = "$SECONDS" ]
+    then
+        #echo "$target_time-$SECONDS"
+        echo "$time"
+        break
+    elif [ "$uptmp" != "$SECONDS" -o "$downtmp" != "$SECONDS" ]
+    then
+        #echo "$target_time-$SECONDS"
+        echo "$time"
+        tmp=$SECONDS
+    fi
+done
