@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import ttk
 
 def get_mode():
-    ans = input("一分以上の時間を計測しますか?(y or n)")
+    ans = input("分単位もしくは秒単位どちらで計測しますか?(y or n)")
     if ans == "y":
         return True
     elif ans == "n":
