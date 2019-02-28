@@ -8,7 +8,7 @@ bool get_mode()
     string ans;
     while(1)
     {
-        cout << "一分以上の時間を計測しますか?(y or n)";
+        cout << "分単位もしくは秒単位どちらで計測しますか(y or n)";
         cin >> ans;
         if(ans == "y")
         {
@@ -21,7 +21,7 @@ bool get_mode()
     }
 }
 
-int get_time(bool mode)
+double get_time(bool mode)
 {
     string tmp;
     int n;
@@ -39,7 +39,7 @@ int get_time(bool mode)
         }
         try
         {
-            n = std::stoi(tmp);
+            n = std::stod(tmp);
             return n;
         }
         catch(...)
@@ -52,7 +52,7 @@ int main()
 {
     cout << "タイマーを起動しました" << endl;
     bool isMiniteMode = get_mode();
-    int target_time = get_time(isMiniteMode);
+    double target_time = get_time(isMiniteMode);
     double start_time = clock();
     if(isMiniteMode)
     {
