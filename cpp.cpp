@@ -51,9 +51,13 @@ int get_time(bool mode)
 int main()
 {
     cout << "タイマーを起動しました" << endl;
-    bool mode = get_mode();
-    int target_time = get_time(mode);
+    bool isMiniteMode = get_mode();
+    int target_time = get_time(isMiniteMode);
     double start_time = clock();
+    if(isMiniteMode)
+    {
+        target_time *= 60;
+    }
     int tmp = (clock() - start_time)/CLOCKS_PER_SEC;
     while(1)
     {
