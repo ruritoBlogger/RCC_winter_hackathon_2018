@@ -36,7 +36,6 @@ done
 while [ 1 ]
 do
     read target_time
-
     # 入力された値が数字かどうか判定する
     expr "$target_time" + 1 >/dev/null 2>&1
     if [ $? -lt 2 ]
@@ -51,10 +50,16 @@ do
     fi
 done
 
+# 分の場合の調整
+if [ $ans=y ]
+then
+    (( $target_time * 60 ))
+fi
+
 SECONDS=0
 
 ### 時間測定したい処理
-sleep 3
+sleep $target_time
 
 time=$SECONDS
 
