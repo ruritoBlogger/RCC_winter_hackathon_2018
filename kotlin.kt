@@ -32,18 +32,25 @@ fun main(args: Array<String>){
     val mode : Boolean = get_mode()
     var target_time : Int = get_time(mode)
     
-    target_time *= 1000
     if(mode) target_time *= 60
     val start : Long = System.currentTimeMillis()
-    var tmp : Long = System.currentTimeMillis() - start
+    var tmp : Double = (System.currentTimeMillis() - start).toDouble()
 
     while(true){
-        if ( (System.currentTimeMillis() - start) > target_time ){
+        //println("${((System.currentTimeMillis() - start)/1000).toDouble()} and ${target_time}")
+        //if ( ((System.currentTimeMillis() - start)/1000).toDouble() > target_time ){
+        if ( tmp/1000 > target_time ){
             println("設定した時間が経過しました")
             break
         }
-        else if (tmp/1000 != (System.currentTimeMillis() - start)/1000) println(tmp/1000)
-        tmp = System.currentTimeMillis() - start
-        //println("${(System.currentTimeMillis() - start)/1000}  and tmp is  ${tmp/1000}")
+        //else if (tmp != System.currentTimeMillis() - start - 0.2 || tmp/1000 != System.currentTimeMillis() - start + 0.2){
+        //else if (tmp != ((System.currentTimeMillis() - start)/1000).toDouble()){
+            //if(tmp != tmp2){
+                //tmp2 = tmp
+        println("%.2f".format(target_time.toDouble() - tmp/1000))
+        tmp = (System.currentTimeMillis() - start).toDouble()
+            //}
+        //}
+        //println("${(System.currentTimeMillis() - start)/1000}")
     }
 }
