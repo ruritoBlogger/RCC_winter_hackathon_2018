@@ -1,6 +1,7 @@
 import time
 from tkinter import *
 from tkinter import ttk
+from PIL import Image, ImageTk
 
 def get_mode():
     ans = input("分単位もしくは秒単位どちらで計測しますか?(y or n)")
@@ -21,34 +22,65 @@ def get_time(mode):
             print("時間を入力してください\n")
     return n
 
-def set_gui():
+def main():
+    
+    # gui起動
     root = Tk()
+    root.geometry('800x500')
     root.title("キッチンタイマー")
-    flame = ttk.Frame(
-            root,
-            height = 480,
-            width = 640,
-            relief = 'ridge',
-            borderwidth = 10
-            )
-    flame.grid()
+    
+    canvas = Canvas(
+        root, # 親要素をメインウィンドウに設定
+        width=400,  # 幅を設定
+        height=500 # 高さを設定
+        #relief=tk.RIDGE  # 枠線を表示
+        # 枠線の幅を設定
+    )
+    canvas.place(x=0, y=0)  # メインウィンドウ上に配置
+
+    #PILでjpgを使用
+    img1 = Image.open(open('yukarin.jpg', 'rb'))
+    img1.thumbnail((500, 500), Image.ANTIALIAS)
+    img1 = ImageTk.PhotoImage(img1)  # 表示するイメージを用意
+
+    canvas.create_image(  # キャンバス上にイメージを配置
+        0,  # x座標
+        0,  # y座標
+        image=img1,  # 配置するイメージオブジェクトを指定
+        tag="illust",  # タグで引数を追加する。
+        anchor=NW  # 配置の起点となる位置を左上隅に指定
+    )
+
+    canvas2 = Canvas(
+        root,
+        width=400,
+        height=500
+    )
+
+    canvas2.place(x = 400,y = 0)
 
     # ウインドウに表示するものの設定
     label1 = ttk.Label(
-            flame,
-            text="Hello",
+            canvas2,
+            text="キッチンタイマー",
             background="#ffffff",
-            width=48,
             padding=(120,50)
             )
-    label1.grid()
+    label1.grid(row=1,column=1)
+    
+    label2 = ttk.Label(
+            canvas2,
+            text="料理のお供",
+            background="#ffffff",
+            padding=(120,50)
+            )
+    label2.grid(row=2,column=1)
 
-    return root
+        #エントリー
+    EditBox = ttk.Entry(width=20)
+    EditBox.place(x = 400, y = 280)
 
-def main():
-    # gui起動
-    root = set_gui()
-    print("タイマーを起動しました")
+    root.mainloop()
     # 1分以上かどうか
     mode = get_mode()
     # 計測時間の受け取り
@@ -79,6 +111,5 @@ def main():
                     else:
                         print("0" + str(tmp + 1))
         tmp = int(float(target_time) - time.time() + start_time)
-
 if __name__ == '__main__':
     main()
