@@ -26,8 +26,6 @@ def set_gui():
     root.title("キッチンタイマー")
     flame = ttk.Frame(
             root,
-            height = 480,
-            width = 640,
             relief = 'ridge',
             borderwidth = 10
             )
@@ -36,12 +34,19 @@ def set_gui():
     # ウインドウに表示するものの設定
     label1 = ttk.Label(
             flame,
-            text="Hello",
+            text="キッチンタイマー",
             background="#ffffff",
-            width=48,
             padding=(120,50)
             )
-    label1.grid()
+    label1.grid(row=1,column=1)
+
+    label2 = ttk.Label(
+            flame,
+            text="料理のお供",
+            background="#ffffff",
+            padding=(120,50)
+    )
+    label2.grid(row=2,column=1)
 
     return root
 
