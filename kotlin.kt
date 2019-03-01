@@ -29,7 +29,21 @@ fun get_time(mode : Boolean) : Int {
 
 fun main(args: Array<String>){
     println("タイマーを起動しました")
-    val mode = get_mode()
-    val target_time = get_time(mode)
-    println(target_time)
+    val mode : Boolean = get_mode()
+    var target_time : Int = get_time(mode)
+    
+    target_time *= 1000
+    if(mode) target_time *= 60
+    val start : Long = System.currentTimeMillis()
+    var tmp : Long = System.currentTimeMillis() - start
+
+    while(true){
+        if ( (System.currentTimeMillis() - start) > target_time ){
+            println("設定した時間が経過しました")
+            break
+        }
+        else if (tmp/1000 != (System.currentTimeMillis() - start)/1000) println(tmp/1000)
+        tmp = System.currentTimeMillis() - start
+        //println("${(System.currentTimeMillis() - start)/1000}  and tmp is  ${tmp/1000}")
+    }
 }
