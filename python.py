@@ -39,7 +39,7 @@ def main():
     canvas.place(x=0, y=0)  # メインウィンドウ上に配置
 
     #PILでjpgを使用
-    img1 = Image.open(open('yukarin.jpg', 'rb'))
+    img1 = Image.open(open('../yukarin.jpg', 'rb'))
     img1.thumbnail((500, 500), Image.ANTIALIAS)
     img1 = ImageTk.PhotoImage(img1)  # 表示するイメージを用意
 
@@ -54,38 +54,18 @@ def main():
     canvas2 = Canvas(
         root,
         width=400,
-        height=500
+        height=500,
+        background="#ffffff"
     )
 
     canvas2.place(x = 400,y = 0)
-
-    # ウインドウに表示するものの設定
-    img = Image.open(open('../yukarin.jpg', 'rb'))
-    img = ImageTk.PhotoImage(img)
-
-    canvas = Canvas(
-        root,  # 親要素をメインウィンドウに設定
-        width=500,  # 幅を設定
-        height=500  # 高さを設定
-        # relief=tk.RIDGE  # 枠線を表示
-        # 枠線の幅を設定
-    )
-
-    canvas.place(x=0, y=0)  # メインウィンドウ上に配置
-
-    canvas.create_image(  # キャンバス上にイメージを配置
-        0,  # x座標
-        0,  # y座標
-        image=img,  # 配置するイメージオブジェクトを指定
-        tag="illust",  # タグで引数を追加する。
-        anchor=NW  # 配置の起点となる位置を左上隅に指定
-    )
 
     label1 = ttk.Label(
             canvas2,
             text="キッチンタイマー",
             background="#ffffff",
-            padding=(120,50)
+            #width=200,
+            padding=(100,50)
             )
     label1.grid(row=1,column=1)
     
@@ -93,7 +73,8 @@ def main():
             canvas2,
             text="料理のお供",
             background="#ffffff",
-            padding=(120,50)
+            #width=100
+            padding=(150,50)
             )
     label2.grid(row=2,column=1)
 
