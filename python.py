@@ -1,6 +1,7 @@
 import time
 from tkinter import *
 from tkinter import ttk
+from PIL import Image, ImageTk
 
 def get_mode():
     ans = input("分単位もしくは秒単位どちらで計測しますか?(y or n)")
@@ -30,8 +31,28 @@ def set_gui():
             borderwidth = 10
             )
     flame.grid()
-
     # ウインドウに表示するものの設定
+    img = Image.open(open('../yukarin.jpg', 'rb'))
+    img = ImageTk.PhotoImage(img)
+
+    canvas = Canvas(
+        root,  # 親要素をメインウィンドウに設定
+        width=500,  # 幅を設定
+        height=500  # 高さを設定
+        # relief=tk.RIDGE  # 枠線を表示
+        # 枠線の幅を設定
+    )
+
+    canvas.place(x=0, y=0)  # メインウィンドウ上に配置
+
+    canvas.create_image(  # キャンバス上にイメージを配置
+        0,  # x座標
+        0,  # y座標
+        image=img,  # 配置するイメージオブジェクトを指定
+        tag="illust",  # タグで引数を追加する。
+        anchor=NW  # 配置の起点となる位置を左上隅に指定
+    )
+
     label1 = ttk.Label(
             flame,
             text="キッチンタイマー",
