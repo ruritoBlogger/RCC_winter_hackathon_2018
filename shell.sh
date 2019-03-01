@@ -61,17 +61,16 @@ tmp=$SECONDS
 while [ 1 ]
 do
     time=$(( target_time - SECONDS ))
-    uptmp=`echo "scale=5;$SECONDS + 0.2" | bc`
-    downtmp=`echo "scale=5;$SECONDS - 0.2" | bc`
     if [ "$target_time" = "$SECONDS" ]
     then
         #echo "$target_time-$SECONDS"
-        echo "$time"
+        #echo "$time"
+        echo "設定した時間が経過しました"
         break
-    elif [ "$uptmp" != "$SECONDS" -o "$downtmp" != "$SECONDS" ]
+    elif [ "$tmp" != "$SECONDS" ]
     then
         #echo "$target_time-$SECONDS"
-        echo "$time"
+        echo "$(( target_time - SECONDS ))"
         tmp=$SECONDS
     fi
 done
